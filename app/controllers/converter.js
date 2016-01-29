@@ -1,21 +1,13 @@
 import Ember from 'ember';
-import computed from 'ember-computed-decorators';
+import computed, { oneWay, or } from 'ember-computed-decorators';
 
 export default Ember.Controller.extend({
-  currencies: {
-    "USD": 1,
-    "EUR": 0.74,
-    "CNY": 6.09
-  },
-
   quantity: 1,
-  cost: 2,
-  selectedCurrency: "EUR",
+  cost:     2,
 
-  @computed('selectedCurrency', 'currencies')
-  selectedRate(selectedCurrency, currencies) {
-    return currencies[selectedCurrency];
-  },
+  @oneWay('model') currencies,
+  @oneWay('currencies.firstObject') defaultCurrency,
+  @or('selectedCurrency', 'defaultCurrency') currency,
 
   @computed('quantity', 'cost')
   amount(quantity, cost) {

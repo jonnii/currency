@@ -3,16 +3,18 @@
     <label for="quantity">Quantity</label>
     {{input id="quantity" class="form-control" type="number" value=quantity min="0"}}
   </div>
+
   <div class="form-group">
     <label for="cost">Cost</label>
-    {{input id="cost"  class="form-control" type="number" value=cost min="0"}}
+    {{input id="cost" class="form-control" type="number" value=cost min="0"}}
   </div>
+
   <div class="form-group">
     <label for="currencies">Currency</label>
     {{#x-select id="currencies" class="form-control" value=selectedCurrency}}
-      {{#each-in currencies as |currency rate|}}
-        {{#x-option value=currency}}{{currency}}{{/x-option}}
-      {{/each-in}}
+      {{#each currencies as |c|}}
+        {{#x-option value=c}}{{c.name}}{{/x-option}}
+      {{/each}}
     {{/x-select}}
   </div>
 </form>
@@ -21,12 +23,12 @@
 
 <table class="table table-striped results">
   <tbody>
-    {{#each-in currencies as |currency rate|}}
+    {{#each currencies as |c|}}
       <tr>
-        <td>{{currency}} @ {{rate}}</td>
-        <td class="{{currency}}">{{convert amount rate selectedRate}}</td>
+        <td>{{c.name}} @ {{c.rate}}</td>
+        <td class="{{c.name}}">{{c.symbol}}{{convert amount c.rate currency.rate}}</td>
       </tr>
-    {{/each-in}}
+    {{/each}}
   </tbody>
 </table>
 

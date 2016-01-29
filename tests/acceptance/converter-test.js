@@ -21,8 +21,8 @@ test('visiting /converter', function(assert) {
 
   // check the results
   andThen(() =>{
-    assert.equal(find('.results .USD').text(), '50.00');
-    assert.equal(find('.results .EUR').text(), '37.00');
-    assert.equal(find('.results .CNY').text(), '304.50');
+    assert.equal(find('.results .USD').text(), '$50.00');
+    assert.equal(find('.results .EUR').text(), '€37.00');
+    assert.equal(find('.results .CNY').text(), '¥304.50');
   });
 });
