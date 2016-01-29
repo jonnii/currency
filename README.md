@@ -7,8 +7,18 @@ A short introduction of this app could easily go here.
 
 ```
 ember new currency
+
 ember g acceptance-test converter
+
+ember g route index
 ember g controller converter
+ember g template converter
+
+ember install ember-bootstrap
+ember install emberx-select
+ember install ember-computed-decorators
+
+ember g helper convert
 ```
 
 ## Prerequisites

@@ -1,0 +1,29 @@
+Quantity
+{{input id="quantity" type="number" value=quantity min="0"}}
+<br/>
+
+Cost
+{{input id="cost" type="number" value=cost min="0"}}
+<br/>
+
+Currency
+{{#x-select id="currencies" value=selectedCurrency}}
+  {{#each-in currencies as |currency rate|}}
+    {{#x-option value=currency}}{{currency}}{{/x-option}}
+  {{/each-in}}
+{{/x-select}}
+
+<hr/>
+
+<table class="table table-striped results">
+  {{#each-in currencies as |currency rate|}}
+    <tr>
+      <td>{{currency}} @ {{rate}}</td>
+      <td class="{{currency}}">{{convert amount rate selectedRate}}</td>
+    </tr>
+  {{/each-in}}
+</table>
+
+<br/>
+
+<button {{action 'pay'}}>Pay?</button>

@@ -14,8 +14,17 @@ module('Acceptance | converter', {
 
 test('visiting /converter', function(assert) {
   visit('/converter');
+  fillIn('#quantity', '10');
+  fillIn('#cost', '5');
+  select('#currencies', 'USD');
 
   andThen(function() {
     assert.equal(currentURL(), '/converter');
+  });
+
+  andThen(() =>{
+    assert.equal(find('.results .USD').text(), '50.00');
+    assert.equal(find('.results .EUR').text(), '37.00');
+    assert.equal(find('.results .CNY').text(), '304.50');
   });
 });
