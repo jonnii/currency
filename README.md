@@ -12,7 +12,8 @@ ember g acceptance-test converter
 
 ember g route index
 ember g controller converter
-ember g template converter
+ember g route converter
+ember g model currency
 
 ember install ember-bootstrap
 ember install emberx-select
